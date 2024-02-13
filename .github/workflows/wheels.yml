@@ -20,10 +20,10 @@ jobs:
                 submodules: recursive
 
             - name: bootstrap vcpkg
-              run: ./vcpkg/bootstrap-vcpkg.sh
+              run: ${GITHUB_WORKSPACE}/vcpkg/bootstrap-vcpkg.sh
             
             - name: Install vcpkg dependencies
-              run: ./vcpkg/vcpkg install
+              run: ${GITHUB_WORKSPACE}/vcpkg/vcpkg install
             
             - name: Cibuildwheel
               uses: pypa/cibuildwheel@v2.16
