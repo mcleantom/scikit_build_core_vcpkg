@@ -44,12 +44,24 @@ filterwarnings = [
 testpaths = ["tests"]
 
 [tool.cibuildwheel]
+build = "cp*"
+skip = "pp*"
+
+[tool.cibuildwheel.linux]
 before-all = '''
-if [ "$RUNNER_OS" = "windows" ]; then
-  .\vcpkg\bootstrap-vcpkg.bat
-else
-  yum -y install curl zip unzip tar
-  ./vcpkg/bootstrap-vcpkg.sh
-fi
+rm -rf vcpkg
+rm -rf vcpkg_installed
+yum -y install curl zip unzip tar
+git clone https://github.com/microsoft/vcpkg.git
+./vcpkg/bootstrap-vcpkg.sh
+./vcpkg/vcpkg install
+'''
+
+[tool.cibuildwheel.windows]
+before-all = '''
+rmdir /s /q vcpkg
+rmdir /s /q vcpkg_installed
+git clone https://github.com/microsoft/vcpkg.git
+./vcpkg/bootstrap-vcpkg.bat
 ./vcpkg/vcpkg install
 '''
