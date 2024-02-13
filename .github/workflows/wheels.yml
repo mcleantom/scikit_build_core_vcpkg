@@ -34,5 +34,5 @@ jobs:
               run: python -m cibuildwheel --output-dir wheelhouse
               env:
                 CIBW_ARCHS_WINDOWS: auto ARM64
-                CIBW_ARCS_LINUX: x86_64
+                CIBW_ARCHS_LINUX: x86_64
     
