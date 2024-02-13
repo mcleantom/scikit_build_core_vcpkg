@@ -1,0 +1,35 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "debug_linux",
+            "displayName": "Debug (Linux)",
+            "binaryDir": "${sourceDir}/build/debug",
+            "generator": "Unix Makefiles",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "VCPKG_INSTALLED_DIR": "${sourceDir}/vcpkg_installed",
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "value": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                    "type": "FILEPATH"
+                }
+            }
+        },
+        {
+            "name": "debug_windows",
+            "displayName": "Debug (Windows)",
+            "binaryDir": "${sourceDir}/build/debug",
+            "generator": "Visual Studio 17 2022",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "VCPKG_INSTALLED_DIR": "${sourceDir}/vcpkg_installed",
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "value": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                    "type": "FILEPATH"
+                }
+            }
+        }
+    ]
+}

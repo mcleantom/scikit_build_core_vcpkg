@@ -1,0 +1,6 @@
+{
+    "name": "scikit-build-core-vcpkg",
+    "dependencies": [
+        "gtest"
+    ]
+}
