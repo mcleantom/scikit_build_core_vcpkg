@@ -44,8 +44,8 @@ filterwarnings = [
 testpaths = ["tests"]
 
 [tool.cibuildwheel]
-build = "cp*-manylinux*"
-skip = "pp*"
+build = "cp*"
+skip = ["-musllinux*", "pp*", "*-manylinux_i686"]
 
 [tool.cibuildwheel.linux]
 before-all = '''
