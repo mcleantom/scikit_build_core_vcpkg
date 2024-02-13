@@ -44,8 +44,8 @@ filterwarnings = [
 testpaths = ["tests"]
 
 [tool.cibuildwheel]
-build = "cp*"
-skip = "{pp*,aarch*,s390*,i686}"
+build = "cp*-manylinux*"
+skip = "pp*"
 
 [tool.cibuildwheel.linux]
 before-all = '''
@@ -56,3 +56,4 @@ git clone https://github.com/microsoft/vcpkg.git
 ./vcpkg/bootstrap-vcpkg.sh
 ./vcpkg/vcpkg install
 '''
+archs = ['x86_64']
