@@ -46,6 +46,7 @@ testpaths = ["tests"]
 [tool.cibuildwheel]
 build = "cp*"
 skip = ["cp*-musllinux*", "pp*"]
+archs = ["x86_64", "AMD64", "arm64"]
 
 [tool.cibuildwheel.linux]
 before-all = '''
