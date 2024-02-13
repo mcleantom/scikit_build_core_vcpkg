@@ -49,6 +49,16 @@ skip = "pp* i686"
 
 [tool.cibuildwheel.linux]
 before-all = '''
+// if ninja not installed
+if ! command -v ninja; then
+  git clone https://github.com/ninja-build/ninja.git
+  cd ninja
+  git checkout release
+  ./configure.py --bootstrap
+  export PATH="$PWD:$PATH"
+  cd ..
+fi
+
 rm -rf vcpkg
 rm -rf vcpkg_installed
 yum -y install curl zip unzip tar
