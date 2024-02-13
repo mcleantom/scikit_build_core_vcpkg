@@ -45,11 +45,12 @@ testpaths = ["tests"]
 
 [tool.cibuildwheel]
 before-all = '''
-if [ "$PLATFORM" = "windows" ]; then
+if [ "$RUNNER_OS" = "windows" ]; then
     git clone https://github.com/Microsoft/vcpkg.git
     cd vcpkg
     .\bootstrap-vcpkg.bat
 else
+    apt-get install -y curl zip unzip tar
     git clone https://github.com/Microsoft/vcpkg.git
     cd vcpkg
     ./bootstrap-vcpkg.sh
