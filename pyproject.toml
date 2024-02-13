@@ -32,3 +32,13 @@ cmake.args = [
     "-DVCPKG_INSTALLED_DIR=./vcpkg_installed",
     "-DBUILD_PYTHON_EXTENSION=ON"
 ]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = ["-ra", "--showlocals", "--strict-markers", "--strict-config"]
+xfail_strict = true
+log_cli_level = "INFO"
+filterwarnings = [
+  "error",
+]
+testpaths = ["tests"]

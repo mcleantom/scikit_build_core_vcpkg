@@ -1,0 +1,6 @@
+find_package(Python REQUIRED COMPONENTS Interpreter Development.Module)
+find_package(pybind11 CONFIG REQUIRED)
+python_add_library(_core MODULE main.cpp WITH_SOABI)
+target_link_libraries(_core PRIVATE pybind11::headers CoreLib)
+target_compile_definitions(_core PRIVATE VERSION_INFO=${PROJECT_VERSION})
+install(TARGETS _core DESTINATION scikit_build_core_vcpkg)

@@ -12,3 +12,4 @@ Then, build and install the package:
 ```
 cd scikit_build_core_vcpkg
 pip install .
+```
