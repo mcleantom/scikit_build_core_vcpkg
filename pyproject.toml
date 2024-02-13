@@ -56,12 +56,3 @@ git clone https://github.com/microsoft/vcpkg.git
 ./vcpkg/bootstrap-vcpkg.sh
 ./vcpkg/vcpkg install
 '''
-
-[tool.cibuildwheel.windows]
-before-all = '''
-rmdir /s /q vcpkg
-rmdir /s /q vcpkg_installed
-git clone https://github.com/microsoft/vcpkg.git
-./vcpkg/bootstrap-vcpkg.bat
-./vcpkg/vcpkg install
-'''

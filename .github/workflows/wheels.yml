@@ -19,13 +19,20 @@ jobs:
               with:
                 submodules: recursive
 
-            - uses: pypa/cibuildwheel@v2.16
-              env:
-                CIBW_ARCHS_MACOS: universal2
-                CIBW_ARCHS_WINDOWS: auto ARM64
+            - name: Bootstrap vcpkg
+              run: |
+                  if [ "$RUNNER_OS" == "Windows" ]; then
+                    ./vcpkg/bootstrap-vcpkg.bat
+                    ./vcpkg/vcpkg install
+                  fi
+              shell: bash
+            
+            - name: Install vcpkg dependencies
+              run: ./vcpkg/vcpkg install
             
             - name: Install cibuildwheel
               run: python -m pip install cibuildwheel==2.16.5
             
             - name: Build wheels
               run: python -m cibuildwheel --output-dir wheelhouse
+              
