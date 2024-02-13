@@ -45,21 +45,13 @@ testpaths = ["tests"]
 
 [tool.cibuildwheel]
 build = "cp*"
-skip = "pp*"
+skip = "pp* i686"
 
 [tool.cibuildwheel.linux]
 before-all = '''
 rm -rf vcpkg
 rm -rf vcpkg_installed
-yum -y update
 yum -y install curl zip unzip tar
-yum install -y https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
-yum groupinstall -y "Development tools"
-yum install -y centos-release-scl
-yum-config-manager --enable rhel-server-rhscl-7-rpms
-yum install -y devtoolset-11 python3 perl-IPC-Cmd pkgconfig
-yum makecache
-yum -y install lcov
 git clone https://github.com/microsoft/vcpkg.git
 ./vcpkg/bootstrap-vcpkg.sh
 ./vcpkg/vcpkg install
