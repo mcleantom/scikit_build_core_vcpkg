@@ -42,3 +42,18 @@ filterwarnings = [
   "error",
 ]
 testpaths = ["tests"]
+
+[tool.cibuildwheel]
+before-all = '''
+if [ "$PLATFORM" = "windows" ]; then
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+    .\bootstrap-vcpkg.bat
+else
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+    ./bootstrap-vcpkg.sh
+fi
+cd ..
+./vcpkg/vcpkg install
+'''
