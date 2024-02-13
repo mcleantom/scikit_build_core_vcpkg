@@ -19,8 +19,13 @@ jobs:
               with:
                 submodules: recursive
 
-            - name: bootstrap vcpkg
-              run: ${GITHUB_WORKSPACE}/vcpkg/bootstrap-vcpkg.sh
+            - name: Bootstrap vcpkg
+              run: |
+                  if [ "${{ matrix.os }}" == "windows-latest" ]; then
+                    cmd /c ${GITHUB_WORKSPACE}\vcpkg\bootstrap-vcpkg.bat
+                  else
+                    bash ${GITHUB_WORKSPACE}/vcpkg/bootstrap-vcpkg.sh
+                  fi
             
             - name: Install vcpkg dependencies
               run: ${GITHUB_WORKSPACE}/vcpkg/vcpkg install
