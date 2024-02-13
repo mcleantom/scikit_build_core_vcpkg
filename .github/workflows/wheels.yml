@@ -26,6 +26,7 @@ jobs:
                   else
                     bash ${GITHUB_WORKSPACE}/vcpkg/bootstrap-vcpkg.sh
                   fi
+              shell: bash
             
             - name: Install vcpkg dependencies
               run: ${GITHUB_WORKSPACE}/vcpkg/vcpkg install
